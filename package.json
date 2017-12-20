@@ -1,0 +1,63 @@
+{
+  "_args": [
+    [
+      "@nebular/theme@2.0.0-rc.2",
+      "/home/gendy/Desktop/nodeprojects/quanode/ngx-admin"
+    ]
+  ],
+  "_from": "@nebular/theme@2.0.0-rc.2",
+  "_id": "@nebular/theme@2.0.0-rc.2",
+  "_inBundle": false,
+  "_integrity": "sha512-TaF2ACM2CIDl4pBDMy9wyypl29S/P95tSgEXu0xALexlb9luhxSLTgw0KXKQKNoIsIeYc0RAuIV4k5Yhbku1lQ==",
+  "_location": "/@nebular/theme",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "version",
+    "registry": true,
+    "raw": "@nebular/theme@2.0.0-rc.2",
+    "name": "@nebular/theme",
+    "escapedName": "@nebular%2ftheme",
+    "scope": "@nebular",
+    "rawSpec": "2.0.0-rc.2",
+    "saveSpec": null,
+    "fetchSpec": "2.0.0-rc.2"
+  },
+  "_requiredBy": [
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/@nebular/theme/-/theme-2.0.0-rc.2.tgz",
+  "_spec": "2.0.0-rc.2",
+  "_where": "/home/gendy/Desktop/nodeprojects/quanode/ngx-admin",
+  "author": {
+    "name": "akveo"
+  },
+  "bugs": {
+    "url": "https://github.com/akveo/nebular/issues"
+  },
+  "description": "@nebular/theme",
+  "homepage": "https://github.com/akveo/nebular#readme",
+  "keywords": [
+    "angular",
+    "typescript",
+    "ng2-admin",
+    "ngx-admin",
+    "theme",
+    "nebular"
+  ],
+  "license": "MIT",
+  "main": "./bundles/theme.umd.js",
+  "module": "./index.js",
+  "name": "@nebular/theme",
+  "peerDependencies": {
+    "@angular/common": "^4.0.0",
+    "@angular/core": "^4.0.0",
+    "@angular/router": "^4.0.0",
+    "bootstrap": "4.0.0-alpha.6"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/akveo/nebular.git"
+  },
+  "typings": "./index.d.ts",
+  "version": "2.0.0-rc.2"
+}
