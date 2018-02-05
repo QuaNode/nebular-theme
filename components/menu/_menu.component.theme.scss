@@ -33,17 +33,16 @@
         //border-radius: nb-theme(menu-submenu-item-border-radius);
       }
 
-      // a:hover,
-      // a.active {
-      //   background-color: nb-theme(menu-active-bg);
-      //   color: nb-theme(menu-active-fg);
-      //   font-weight: nb-theme(menu-active-font-weight);
+      a:hover,
+      a.active {
+        background-color: #0d43a6;
+        color: white;
 
-      //   .menu-icon,
-      //   .chevron {
-      //     color: nb-theme(menu-icon-active-color);
-      //   }
-      // }
+        .menu-icon,
+        .chevron {
+          color: white;
+        }
+      }
 
       .menu-icon {
         font-size: nb-theme(menu-icon-font-size);
@@ -96,34 +95,35 @@
     //   //   background: nb-theme(menu-submenu-hover-bg);
     //   // }
 
-    //   // a.active {
-    //   //   background-color: nb-theme(menu-submenu-active-bg);
-    //   //   color: nb-theme(menu-submenu-active-fg);
-    //   //   border-color: nb-theme(menu-submenu-active-border-color);
-    //   //   box-shadow: nb-theme(menu-submenu-active-shadow);
-    //   // }
+      a.active {
+        background-color: #0d43a6;
+        color: nb-theme(menu-submenu-active-fg);
+        border-color: nb-theme(menu-submenu-active-border-color);
+        box-shadow: nb-theme(menu-submenu-active-shadow);
+      }
      }
   }
 
-  // nb-menu.inverse {
-  //   .menu-item {
-  //     a {
-  //       color: nb-theme(menu-bg);
-  //     }
+  nb-menu.inverse {
+    .menu-item {
+      a {
+        color:white;
+      }
 
-  //     a:hover {
-  //       background-color: nb-theme(menu-active-fg);
-  //       color: nb-theme(menu-active-bg);
-  //     }
+      a:hover {
+        background-color: #0d43a6;
+        color:white;
+      }
 
-  //     a.active {
-  //       background-color: nb-theme(menu-active-fg);
-  //       color: nb-theme(menu-active-bg);
-  //     }
-  //   }
+      a.active {
+        background-color: #0d43a6;
+        color:white;
+      }
+    }
 
-  //   .menu-group {
-  //     color: nb-theme(menu-bg);
-  //   }
-  // }
+    .menu-group {
+        background-color: #0d43a6;
+        color:white;
+    }
+  }
 }
