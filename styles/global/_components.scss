@@ -4,28 +4,9 @@
  * Licensed under the MIT License. See License.txt in the project root for license information.
  */
 
-@import '../../components/layout/layout.component.theme';
-@import '../../components/sidebar/sidebar.component.theme';
-@import '../../components/card/card.component.theme';
-@import '../../components/tabset/tabset.component.theme';
-@import '../../components/route-tabset/route-tabset.component.theme';
-@import '../../components/menu/menu.component.theme';
-@import '../../components/user/user.component.theme';
-@import '../../components/actions/actions.component.theme';
-@import '../../components/search/search.component.theme';
-@import '../../components/checkbox/checkbox.component.theme';
+@import '../../components/auth-block/auth-block.component.theme';
 
-
-@mixin nb-theme-components() {
-
-  @include nb-layout-theme();
-  @include nb-sidebar-theme();
-  @include nb-card-theme();
-  @include nb-tabset-theme();
-  @include nb-route-tabset-theme();
-  @include nb-menu-theme();
-  @include nb-user-theme();
-  @include nb-actions-theme();
-  @include nb-search-theme();
-  @include nb-checkbox-theme();
+// Create a theme
+@mixin nb-auth-components() {
+  @include nb-auth-block-theme();
 }

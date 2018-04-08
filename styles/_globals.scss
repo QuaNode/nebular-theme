@@ -5,15 +5,7 @@
  */
 
 @import 'global/components';
-@import 'global/overrides';
 
-@mixin nb-theme-global() {
-  @include nb-theme-components();
-  @include nb-theme-overrides();
-}
-
-@mixin nb-install() {
-  @include nb-install-global() {
-    @content;
-  }
+@mixin nb-auth-global() {
+  @include nb-auth-components();
 }

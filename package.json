@@ -1,22 +1,22 @@
 {
   "_args": [
     [
-      "@nebular/theme@2.0.0-rc.6",
+      "@nebular/auth@2.0.0-rc.6",
       "C:\\Users\\defaultuser0\\Desktop\\goLegal\\ngx-admin"
     ]
   ],
-  "_from": "@nebular/theme@2.0.0-rc.6",
-  "_id": "@nebular/theme@2.0.0-rc.6",
+  "_from": "@nebular/auth@2.0.0-rc.6",
+  "_id": "@nebular/auth@2.0.0-rc.6",
   "_inBundle": false,
-  "_integrity": "sha512-lhnm9bZTNL/L1APyRwC7KVBLY5oPEUsVLFiMdawrBELWNLgLrTwr9+o2GexiBSBbcz3zkTraWhWNRUfdUqMi2Q==",
-  "_location": "/@nebular/theme",
+  "_integrity": "sha512-DRdU1xcTO1lDTBFZuy2XJKQjpatCp+nimaBtxCfX8Pel+FpKMF6IITuRpPF5sfPYTYPo2F1Tr3LY0b3LEOuBNA==",
+  "_location": "/@nebular/auth",
   "_phantomChildren": {},
   "_requested": {
     "type": "version",
     "registry": true,
-    "raw": "@nebular/theme@2.0.0-rc.6",
-    "name": "@nebular/theme",
-    "escapedName": "@nebular%2ftheme",
+    "raw": "@nebular/auth@2.0.0-rc.6",
+    "name": "@nebular/auth",
+    "escapedName": "@nebular%2fauth",
     "scope": "@nebular",
     "rawSpec": "2.0.0-rc.6",
     "saveSpec": null,
@@ -25,7 +25,7 @@
   "_requiredBy": [
     "/"
   ],
-  "_resolved": "https://registry.npmjs.org/@nebular/theme/-/theme-2.0.0-rc.6.tgz",
+  "_resolved": "https://registry.npmjs.org/@nebular/auth/-/auth-2.0.0-rc.6.tgz",
   "_spec": "2.0.0-rc.6",
   "_where": "C:\\Users\\defaultuser0\\Desktop\\goLegal\\ngx-admin",
   "author": {
@@ -34,7 +34,7 @@
   "bugs": {
     "url": "https://github.com/akveo/nebular/issues"
   },
-  "description": "@nebular/theme",
+  "description": "@nebular/auth",
   "homepage": "https://github.com/akveo/nebular#readme",
   "keywords": [
     "angular",
@@ -42,18 +42,23 @@
     "ng2-admin",
     "ngx-admin",
     "theme",
+    "auth",
+    "login",
+    "register",
     "nebular"
   ],
   "license": "MIT",
-  "main": "./bundles/theme.umd.js",
+  "main": "./bundles/auth.umd.js",
   "module": "./index.js",
-  "name": "@nebular/theme",
+  "name": "@nebular/auth",
   "peerDependencies": {
     "@angular/common": "^5.1.0",
     "@angular/core": "^5.1.0",
     "@angular/router": "^5.1.0",
-    "rxjs": "~5.5.5",
-    "bootstrap": "^4.0.0"
+    "@angular/forms": "^5.1.0",
+    "@angular/http": "^5.1.0",
+    "@nebular/theme": "2.0.0-rc.6",
+    "rxjs": "~5.5.5"
   },
   "repository": {
     "type": "git",
