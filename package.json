@@ -3,38 +3,72 @@
     [
       "@nebular/theme@2.0.0-rc.6",
       "C:\\Users\\defaultuser0\\Desktop\\goLegal\\ngx-admin"
+    ],
+    [
+      {
+        "raw": "@nebular/theme@github:quanode/nebular-theme#golegal-theme",
+        "scope": "@nebular",
+        "escapedName": "@nebular%2ftheme",
+        "name": "@nebular/theme",
+        "rawSpec": "github:quanode/nebular-theme#golegal-theme",
+        "spec": "github:quanode/nebular-theme#golegal-theme",
+        "type": "hosted",
+        "hosted": {
+          "type": "github",
+          "ssh": "git@github.com:quanode/nebular-theme.git#golegal-theme",
+          "sshUrl": "git+ssh://git@github.com/quanode/nebular-theme.git#golegal-theme",
+          "httpsUrl": "git+https://github.com/quanode/nebular-theme.git#golegal-theme",
+          "gitUrl": "git://github.com/quanode/nebular-theme.git#golegal-theme",
+          "shortcut": "github:quanode/nebular-theme#golegal-theme",
+          "directUrl": "https://raw.githubusercontent.com/quanode/nebular-theme/golegal-theme/package.json"
+        }
+      },
+      "G:\\Hany\\Android\\Quanode\\golegal\\angular"
     ]
   ],
-  "_from": "@nebular/theme@2.0.0-rc.6",
+  "_from": "quanode/nebular-theme#golegal-theme",
   "_id": "@nebular/theme@2.0.0-rc.6",
   "_inBundle": false,
+  "_inCache": true,
   "_integrity": "sha512-lhnm9bZTNL/L1APyRwC7KVBLY5oPEUsVLFiMdawrBELWNLgLrTwr9+o2GexiBSBbcz3zkTraWhWNRUfdUqMi2Q==",
   "_location": "/@nebular/theme",
   "_phantomChildren": {},
   "_requested": {
-    "type": "version",
-    "registry": true,
-    "raw": "@nebular/theme@2.0.0-rc.6",
-    "name": "@nebular/theme",
-    "escapedName": "@nebular%2ftheme",
+    "raw": "@nebular/theme@github:quanode/nebular-theme#golegal-theme",
     "scope": "@nebular",
-    "rawSpec": "2.0.0-rc.6",
-    "saveSpec": null,
-    "fetchSpec": "2.0.0-rc.6"
+    "escapedName": "@nebular%2ftheme",
+    "name": "@nebular/theme",
+    "rawSpec": "github:quanode/nebular-theme#golegal-theme",
+    "spec": "github:quanode/nebular-theme#golegal-theme",
+    "type": "hosted",
+    "hosted": {
+      "type": "github",
+      "ssh": "git@github.com:quanode/nebular-theme.git#golegal-theme",
+      "sshUrl": "git+ssh://git@github.com/quanode/nebular-theme.git#golegal-theme",
+      "httpsUrl": "git+https://github.com/quanode/nebular-theme.git#golegal-theme",
+      "gitUrl": "git://github.com/quanode/nebular-theme.git#golegal-theme",
+      "shortcut": "github:quanode/nebular-theme#golegal-theme",
+      "directUrl": "https://raw.githubusercontent.com/quanode/nebular-theme/golegal-theme/package.json"
+    }
   },
   "_requiredBy": [
     "/"
   ],
-  "_resolved": "https://registry.npmjs.org/@nebular/theme/-/theme-2.0.0-rc.6.tgz",
-  "_spec": "2.0.0-rc.6",
-  "_where": "C:\\Users\\defaultuser0\\Desktop\\goLegal\\ngx-admin",
+  "_resolved": "git://github.com/quanode/nebular-theme.git#19d5eba06e0e492a944c2ae24c0b40ecebc5245d",
+  "_shasum": "c4953b0013941fa8a2c4f8bdeabf1f2efc9c1855",
+  "_shrinkwrap": null,
+  "_spec": "@nebular/theme@github:quanode/nebular-theme#golegal-theme",
+  "_where": "G:\\Hany\\Android\\Quanode\\golegal\\angular",
   "author": {
     "name": "akveo"
   },
   "bugs": {
     "url": "https://github.com/akveo/nebular/issues"
   },
+  "dependencies": {},
   "description": "@nebular/theme",
+  "devDependencies": {},
+  "gitHead": "19d5eba06e0e492a944c2ae24c0b40ecebc5245d",
   "homepage": "https://github.com/akveo/nebular#readme",
   "keywords": [
     "angular",
@@ -48,6 +82,7 @@
   "main": "./bundles/theme.umd.js",
   "module": "./index.js",
   "name": "@nebular/theme",
+  "optionalDependencies": {},
   "peerDependencies": {
     "@angular/common": "^5.1.0",
     "@angular/core": "^5.1.0",
@@ -55,6 +90,8 @@
     "rxjs": "~5.5.5",
     "bootstrap": "^4.0.0"
   },
+  "readme": "### @nebular/theme module, more details https://akveo.github.io/nebular/\r\n",
+  "readmeFilename": "README.md",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/akveo/nebular.git"

@@ -5,10 +5,10 @@
  */
 
 @mixin nb-checkbox-theme() {
-  @mixin hover-border($color) {
-    .customised-control-input:checked ~ .customised-control-indicator {
-      border-color: $color;
-    }
+  // @mixin hover-border($color) {
+  //   .customised-control-input:checked ~ .customised-control-indicator {
+  //     border-color: $color;
+  //   }
     .customised-control-input:hover:enabled ~ .customised-control-indicator {
       // border-color: lighten($color, 10%);
     }
@@ -147,19 +147,19 @@
       }
     }
 
-    @include hover-border(nb-theme(checkbox-checked-border-color));
-    &.success {
-      @include hover-border(nb-theme(color-success));
-    }
-    &.warning {
-      @include hover-border(nb-theme(color-warning));
-    }
-    &.danger {
-      @include hover-border(nb-theme(color-danger));
-    }
+    // @include hover-border(nb-theme(checkbox-checked-border-color));
+    // &.success {
+    //   @include hover-border(nb-theme(color-success));
+    // }
+    // &.warning {
+    //   @include hover-border(nb-theme(color-warning));
+    // }
+    // &.danger {
+    //   @include hover-border(nb-theme(color-danger));
+    // }
 
     .customised-control-description {
       @include description-style;
     }
   }
-}
+

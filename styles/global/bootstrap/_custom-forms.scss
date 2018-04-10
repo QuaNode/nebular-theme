@@ -5,13 +5,13 @@
  */
 
 @mixin custom-forms() {
-  @mixin hover-checked-border($color) {
-    .custom-control-input:hover ~ .custom-control-indicator,
-    .custom-control-input:checked ~ .custom-control-indicator,
-    .custom-control-input:hover:checked ~ .custom-control-indicator {
-      border-color: $color;
-    }
-  }
+  // @mixin hover-checked-border($color) {
+  //   .custom-control-input:hover ~ .custom-control-indicator,
+  //   .custom-control-input:checked ~ .custom-control-indicator,
+  //   .custom-control-input:hover:checked ~ .custom-control-indicator {
+  //     border-color: $color;
+  //   }
+  // }
 
   .custom-control {
     margin: 0;
@@ -80,16 +80,16 @@
       }
     }
 
-    @include hover-checked-border(nb-theme(checkbox-selected-border-color));
-    &.success {
-      @include hover-checked-border(nb-theme(color-success));
-    }
-    &.warning {
-      @include hover-checked-border(nb-theme(color-warning));
-    }
-    &.danger {
-      @include hover-checked-border(nb-theme(color-danger));
-    }
+    // @include hover-checked-border(nb-theme(checkbox-selected-border-color));
+    // &.success {
+    //   @include hover-checked-border(nb-theme(color-success));
+    // }
+    // &.warning {
+    //   @include hover-checked-border(nb-theme(color-warning));
+    // }
+    // &.danger {
+    //   @include hover-checked-border(nb-theme(color-danger));
+    // }
 
     .custom-control-description {
       padding-left: 0.25rem;
