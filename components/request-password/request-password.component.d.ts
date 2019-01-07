@@ -1,7 +1,5 @@
 import { Router } from '@angular/router';
-import { NbAuthService } from '../../services/auth.service';
 export declare class NbRequestPasswordComponent {
-    protected service: NbAuthService;
     protected config: {};
     protected router: Router;
     redirectDelay: number;
@@ -11,7 +9,7 @@ export declare class NbRequestPasswordComponent {
     errors: string[];
     messages: string[];
     user: any;
-    constructor(service: NbAuthService, config: {}, router: Router);
+    constructor(router: Router);
     requestPass(): void;
     getConfigValue(key: string): any;
 }

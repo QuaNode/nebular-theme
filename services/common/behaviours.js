@@ -1,62 +1,64 @@
 /*jshint esversion: 6 */
 
-// import {
-//     Injectable,
-//     Inject
-// } from '@angular/core';
-// import {
-//     Http,
-//     Request,
-//     RequestMethod,
-//     Headers
-// } from '@angular/http';
-// import { Observable } from 'rxjs/Observable';
-import { Injectable, Inject } from '@angular/core';
-import { Http, Headers, RequestOptions, Response, RequestMethod, Request } from '@angular/http';
-import { Observable } from 'rxjs';
-// import 'rxjs/add/operator/map';
-import { map, catchError } from 'rxjs/operators';
+import {
+    Injectable,
+    Inject
+} from '@angular/core';
+import {
+    Http,
+    Request,
+    RequestMethod,
+    Headers
+} from '@angular/http';
+import {
+    throwError
+} from 'rxjs';
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/catch';
 
-var behavioursJson = null;
+var getValueForParameter = function (parameter, data, key, name) {
 
-var getValueForParameter = function(parameter, data, key, name) {
-    return (typeof data === 'object' && typeof key === 'string' && data[key]) || (function() {
+    if (typeof data === 'object' && typeof key === 'string' && data[key] !== undefined) return data[key];
+    else return (function () {
 
         if (parameter.value) return typeof parameter.value === 'function' ? parameter.value(name, data) : parameter.value;
-        else
-            return getParamterFromCache(parameter.source, key)[key].value;
-
+        else return getParamterFromCache(parameter.source, key)[key].value;
     }());
 };
 
-var getParamterFromCache = function(source, key) {
+var getParamterFromCache = function (source, key) {
 
     if (typeof source === 'string' && typeof window[source] === 'object')
         return JSON.parse(window[source].getItem('Behaviours') || (key ? '{"' + key + '":{}}' : '{}'));
     return JSON.parse(key ? '{"' + key + '":{}}' : '{}');
 };
 
-var setParameterToCache = function(parameter, key) {
+var setParameterToCache = function (parameters, key) {
 
-    if (typeof key === 'string' && typeof parameter[key].source === 'string' && typeof window[parameter[key].source] === 'object')
-        window[parameter[key].source].setItem('Behaviours', JSON.stringify(parameter));
+    if (typeof key === 'string' && typeof parameters[key].source === 'string' && typeof window[parameters[key].source] === 'object')
+        window[parameters[key].source].setItem('Behaviours', JSON.stringify(parameters));
 };
 
 export class Behaviours {
 
-    constructor(http, baseURL, defaults) {
+    constructor(http, baseURL, errorCallback, defaults) {
 
         var self = this;
+        var behavioursBody = null;
+        var behavioursHeaders = null;
         var callbacks = [];
-        self.http = http;
         var parameters = Object.assign(JSON.parse(window.localStorage.getItem('Behaviours') || '{}'), defaults || {});
-        if (!behavioursJson) http.get((typeof baseURL === 'string' && baseURL.length > 0 ? typeof baseURL.split('/')[0] === 'string' &&
+        if (!behavioursBody) http.get((typeof baseURL === 'string' && baseURL.length > 0 ? typeof baseURL.split('/')[0] === 'string' &&
             baseURL.split('/')[0].startsWith('http') ? baseURL : window.location.origin + baseURL : '') + '/behaviours').subscribe((response) => {
 
-            behavioursJson = response.json();
-            if (typeof behavioursJson === 'object') {
+            behavioursBody = response.json();
+            behavioursHeaders = {
 
-                var keys = Object.keys(behavioursJson);
+                'Content-Type': response.headers.get('Content-Type')
+            };
+            if (typeof behavioursBody === 'object') {
+
+                var keys = Object.keys(behavioursBody);
                 for (var i = 0; i < keys.length; i++) {
 
                     self[keys[i]] = self.getBehaviour(keys[i]);
@@ -74,37 +76,42 @@ export class Behaviours {
 
             throw new Error('Error in initializing Behaviours: ' + error.json().message || error.statusText || ('Error status: ' + error.status));
         });
-        self.ready = function(cb) {
+        self.getBaseUrl = self.getBaseURL = function () {
+
+            return baseURL;
+        };
+        self.ready = function (cb) {
 
             if (typeof cb !== 'function') return;
-            if (!behavioursJson) {
+            if (!behavioursBody) {
 
                 callbacks.push(cb);
             } else cb();
         };
-        self.getBehaviour = function(behaviourName) {
+        self.getBehaviour = function (behaviourName) {
 
             if (typeof behaviourName !== 'string') {
 
                 throw new Error('Invalid behaviour name');
             }
-            if (!behavioursJson) {
+            if (!behavioursBody) {
 
                 throw new Error('Behaviours is not ready yet');
             }
-            if (behavioursJson[behaviourName]) {
+            if (behavioursBody[behaviourName]) {
 
-                var behaviour = behavioursJson[behaviourName];
-                return function(behaviourData) {
+                var behaviour = behavioursBody[behaviourName];
+                return function (behaviourData) {
+
                     if (typeof behaviourData !== 'object') behaviourData = {};
                     var params = Object.assign(behaviour.parameters || {}, parameters);
                     var keys = Object.keys(params);
-                    var headers = {};
+                    var headers = Object.assign({}, behavioursHeaders);
                     var data = {};
                     var url = behaviour.path;
                     for (var key in keys) {
 
-                        if (!getValueForParameter(params[keys[key]], behaviourData, keys[key], behaviourName)) continue;
+                        if (getValueForParameter(params[keys[key]], behaviourData, keys[key], behaviourName) === undefined) continue;
                         if (Array.isArray(params[keys[key]].unless) && params[keys[key]].unless.indexOf(behaviourName) > -1) continue;
                         if (Array.isArray(params[keys[key]].for) && params[keys[key]].for.indexOf(behaviourName) === -1) continue;
                         var type = params && typeof params[keys[key]] === 'object' ? params[keys[key]].type : '';
@@ -146,11 +153,11 @@ export class Behaviours {
                                 baseURL.split('/')[0].startsWith('http') ? baseURL : window.location.origin + baseURL : '') + url,
                             headers: new Headers(headers),
                             body: data
-                        })).pipe(map((response) => {
+                        })).map((response) => {
 
                             headers = {};
                             data = {};
-                            if (typeof behaviour.returns === 'object' && Object.keys(behaviour.returns).filter(function(key) {
+                            if (typeof behaviour.returns === 'object' && Object.keys(behaviour.returns).filter(function (key) {
 
                                     var paramValue, paramKey;
                                     if (behaviour.returns[key].type === 'header')
@@ -174,7 +181,7 @@ export class Behaviours {
                                                     };
                                                     if (Array.isArray(purpose.unless)) param[paramKey].unless = parameters[paramKey].unless = purpose.unless;
                                                     if (Array.isArray(purpose.for)) param[paramKey].for = parameters[paramKey].for = purpose.for;
-                                                    if (behaviour.returns[key].purpose.filter(function(p) {
+                                                    if (behaviour.returns[key].purpose.filter(function (p) {
 
                                                             return p === 'constant' || p.as === 'constant';
                                                         }).length > 0) param[paramKey].value = parameters[paramKey].value = paramValue;
@@ -193,11 +200,13 @@ export class Behaviours {
                                 } : data);
                             } else return response.json().response;
                         })
-                        ,catchError((error) => {
+                        .catch((error) => {
 
-                            return Observable.throw(new Error(error.json && error.json().message || error.statusText ||
+                            var throwing = throwError(new Error(error.json() && error.json().message || error.statusText ||
                                 ('Error status: ' + error.status)));
-                        }));
+                            errorCallback(error);
+                            return throwing;
+                        });
                 };
             } else {
 

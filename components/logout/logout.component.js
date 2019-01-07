@@ -1,12 +1,20 @@
-import { Component, Inject } from '@angular/core';
-import { Router } from '@angular/router';
-import { NB_AUTH_OPTIONS } from '../../auth.options';
-import { getDeepFromObject } from '../../helpers';
-import { NbAuthService } from '../../services/auth.service';
+import {
+    Component
+} from '@angular/core';
+
+import {
+    Router
+} from '@angular/router';
+
+import {
+    getDeepFromObject
+} from '../../helpers';
+
 var NbLogoutComponent = /** @class */ (function () {
-    function NbLogoutComponent(service, config, router) {
-        if (config === void 0) { config = {}; }
-        this.service = service;
+
+    function NbLogoutComponent(router, config) {
+
+        if (config === void 0) config = {};
         this.config = config;
         this.router = router;
         this.redirectDelay = 0;
@@ -15,35 +23,36 @@ var NbLogoutComponent = /** @class */ (function () {
         this.provider = this.getConfigValue('forms.logout.provider');
     }
     NbLogoutComponent.prototype.ngOnInit = function () {
+
         this.logout(this.provider);
     };
-    NbLogoutComponent.prototype.logout = function (provider) {
-        var _this = this;
-        this.service.logout(provider).subscribe(function (result) {
-            var redirect = result.getRedirect();
-            if (redirect) {
-                setTimeout(function () {
-                    return _this.router.navigateByUrl(redirect);
-                }, _this.redirectDelay);
-            }
-        });
+    NbLogoutComponent.prototype.logout = function () {
+
     };
     NbLogoutComponent.prototype.getConfigValue = function (key) {
+
         return getDeepFromObject(this.config, key, null);
     };
-    NbLogoutComponent.decorators = [
-        { type: Component, args: [{
-                    selector: 'nb-logout',
-                    template: "\n    <div>Logging out, please wait...</div>\n  ",
-                },] },
-    ];
+    NbLogoutComponent.decorators = [{
+
+        type: Component,
+        args: [{
+
+            selector: 'nb-logout',
+            template: "\n    <div>Logging out, please wait...</div>\n  ",
+        }, ]
+    }, ];
     /** @nocollapse */
-    NbLogoutComponent.ctorParameters = function () { return [
-        { type: NbAuthService, },
-        { type: undefined, decorators: [{ type: Inject, args: [NB_AUTH_OPTIONS,] },] },
-        { type: Router, },
-    ]; };
+    NbLogoutComponent.ctorParameters = function () {
+
+        return [{
+
+            type: Router
+        }];
+    };
     return NbLogoutComponent;
 }());
-export { NbLogoutComponent };
+export {
+    NbLogoutComponent
+};
 //# sourceMappingURL=logout.component.js.map

@@ -3,6 +3,7 @@ import {
     Component,
     Inject
 } from '@angular/core';
+
 import {
     Router
 } from '@angular/router';
@@ -19,7 +20,7 @@ const router_1 = require('@angular/router');
 
 var NbLoginComponent = /** @class */ (function () {
 
-    function NbLoginComponent(behaviours, router) {
+    function NbLoginComponent(behaviours, router, config) {
 
         if (config === void 0) config = {};
         var self = this;
@@ -76,6 +77,7 @@ var NbLoginComponent = /** @class */ (function () {
         [new Inject(router_1.Router)]
     ];
     NbLoginComponent.decorators = [{
+
         type: Component,
         args: [{
             selector: 'nb-login',
@@ -84,7 +86,9 @@ var NbLoginComponent = /** @class */ (function () {
     }, ];
     /** @nocollapse */
     NbLoginComponent.ctorParameters = function () {
+
         return [{
+
                 type: Behaviours
             },
             {
