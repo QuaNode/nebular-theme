@@ -8,7 +8,7 @@ import {
 } from '@angular/common';
 
 import {
-    RouterModule
+    RouterModule, Router
 } from '@angular/router';
 
 import {
@@ -78,7 +78,7 @@ var NbAuthModule = /** @class */ (function () {
 
                 provide: Behaviours,
                 useFactory: getBehaviours,
-                deps: [Http]
+                deps: [Http, Router]
             }],
         };
     };
@@ -116,11 +116,6 @@ var NbAuthModule = /** @class */ (function () {
             ],
         }, ]
     }];
-    /** @nocollapse */
-    NbAuthModule.ctorParameters = function () {
-
-        return [];
-    };
     return NbAuthModule;
 }());
 export {
