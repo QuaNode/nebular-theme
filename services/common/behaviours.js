@@ -11,8 +11,9 @@ import {
     Headers
 } from '@angular/http';
 import {
-    throwError
+  Observable
 } from 'rxjs';
+import 'rxjs/add/observable/throw';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 
@@ -47,7 +48,6 @@ export class Behaviours {
         var behavioursBody = null;
         var behavioursHeaders = null;
         var callbacks = [];
-        var parameters = Object.assign(JSON.parse(window.localStorage.getItem('Behaviours') || '{}'), defaults || {});
         if (!behavioursBody) http.get((typeof baseURL === 'string' && baseURL.length > 0 ? typeof baseURL.split('/')[0] === 'string' &&
             baseURL.split('/')[0].startsWith('http') ? baseURL : window.location.origin + baseURL : '') + '/behaviours').subscribe((response) => {
 
@@ -104,6 +104,7 @@ export class Behaviours {
                 return function (behaviourData) {
 
                     if (typeof behaviourData !== 'object') behaviourData = {};
+                    var parameters = Object.assign(JSON.parse(window.localStorage.getItem('Behaviours') || '{}'), defaults || {});
                     var params = Object.assign(behaviour.parameters || {}, parameters);
                     var keys = Object.keys(params);
                     var headers = Object.assign({}, behavioursHeaders);
@@ -202,9 +203,11 @@ export class Behaviours {
                         })
                         .catch((error) => {
 
-                            var throwing = throwError(new Error(error.json() && error.json().message || error.statusText ||
-                                ('Error status: ' + error.status)));
-                            errorCallback(error);
+                            var err = new Error((error.json() && error.json().message) || error.statusText ||
+                                ('Error status: ' + error.status));
+                            err.code = error.status;
+                            var throwing = Observable.throw(err);
+                            if (errorCallback) errorCallback(err);
                             return throwing;
                         });
                 };

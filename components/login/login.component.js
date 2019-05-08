@@ -52,7 +52,7 @@ var NbLoginComponent = /** @class */ (function () {
                         }));
                         if (response.privilege == 'admin') {
 
-                            self.router.navigate(['/pages/tables/checklistParent']);
+                            self.router.navigate(['/pages/tables/checklists']);
                         } else {
 
                             alert('who are you!')
