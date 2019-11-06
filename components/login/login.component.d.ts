@@ -1,7 +1,7 @@
 import { Router } from '@angular/router';
 import {
     Behaviours
-} from '../../services/common/behaviours';
+} from 'ng-behaviours';
 export declare class NbLoginComponent {
     protected behaviours: Behaviours;
     protected router: Router;

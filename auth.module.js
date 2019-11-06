@@ -64,7 +64,7 @@ import {
 
 import {
     Behaviours
-} from './services/common/behaviours';
+} from 'ng-behaviours';
 
 var NbAuthModule = /** @class */ (function () {
 
